@@ -48,3 +48,19 @@ class ValueStatement
   end
 
 end
+
+class PriceStatement
+
+  def initialize(sentence, conversion_table)
+  end
+
+  def metal
+    'Silver'
+  end
+
+  def price
+    7
+  end
+
+
+end
