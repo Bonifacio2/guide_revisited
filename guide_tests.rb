@@ -28,3 +28,39 @@ class SentenceTest < Test::Unit::TestCase
     assert_equal(second_sentence.is_question?, false)
   end
 end
+
+class ValueStatementTest < Test::Unit::TestCase
+
+  def test_creation
+    sentence = Sentence.new('chip is X')
+    statement  = ValueStatement.new(sentence)
+
+    assert_equal(statement.key, 'chip')
+    assert_equal(statement.value, 'X')
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#

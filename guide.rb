@@ -33,5 +33,18 @@ class Sentence
       return true
     end
   end
+end
 
+class ValueStatement
+
+  def initialize(body)
+  end
+
+  def key
+    'chip'
+  end
+
+  def value
+    'X'
+  end
 end
