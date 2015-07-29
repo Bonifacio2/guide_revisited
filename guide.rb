@@ -15,6 +15,13 @@ class Sentence
   end
 
   def is_price_statement?
-    true
+    match_data = /^[A-Z ]+ is [0-9]+ Credits$/i.match(@body)
+
+    if match_data.nil?
+      return false
+    else
+      return true
+    end
+
   end
 end

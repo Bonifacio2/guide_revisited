@@ -13,8 +13,10 @@ class SentenceTest < Test::Unit::TestCase
   end
 
   def test_is_price_statement
-    sentence = Sentence.new('glob glob Silver is 34 Credits')
+    first_sentence = Sentence.new('glob glob Silver is 34 Credits')
+    second_sentence = Sentence.new('hguf huge Metal is 127 Nonsense')
 
-    assert_equal(sentence.is_price_statement?, true)
+    assert_equal(first_sentence.is_price_statement?, true)
+    assert_equal(second_sentence.is_price_statement?, false)
   end
 end
