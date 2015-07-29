@@ -25,7 +25,13 @@ class Sentence
   end
 
   def is_question?
-    true
+    match_data = /^how (much|many Credits) is [a-z ]+ \?/i.match(@body)
+
+    if match_data.nil?
+      return false
+    else
+      return true
+    end
   end
 
 end

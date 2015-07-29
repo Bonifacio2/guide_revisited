@@ -21,8 +21,10 @@ class SentenceTest < Test::Unit::TestCase
   end
 
   def test_is_question
-    sentence = Sentence.new('how much is pish tegj glob glob ?')
+    first_sentence = Sentence.new('how much is pish tegj glob glob ?')
+    second_sentence = Sentence.new('how much hue hue br ?')
 
-    assert_equal(sentence.is_question?, true)
+    assert_equal(first_sentence.is_question?, true)
+    assert_equal(second_sentence.is_question?, false)
   end
 end
