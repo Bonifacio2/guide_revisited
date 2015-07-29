@@ -32,11 +32,11 @@ end
 class ValueStatementTest < Test::Unit::TestCase
 
   def test_creation
-    sentence = Sentence.new('chip is X')
-    statement  = ValueStatement.new(sentence)
+    first_sentence = Sentence.new('chip is X')
+    first_statement  = ValueStatement.new(first_sentence)
 
-    assert_equal(statement.key, 'chip')
-    assert_equal(statement.value, 'X')
+    assert_equal(first_statement.key, 'chip')
+    assert_equal(first_statement.value, 'X')
   end
 end
 
