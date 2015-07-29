@@ -13,4 +13,8 @@ class Sentence
       return true
     end
   end
+
+  def is_price_statement?
+    true
+  end
 end

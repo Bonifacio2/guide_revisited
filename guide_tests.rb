@@ -11,4 +11,10 @@ class SentenceTest < Test::Unit::TestCase
     assert_equal(first_sentence.is_value_statement?, true)
     assert_equal(second_sentence.is_value_statement?, false)
   end
+
+  def test_is_price_statement
+    sentence = Sentence.new('glob glob Silver is 34 Credits')
+
+    assert_equal(sentence.is_price_statement?, true)
+  end
 end
