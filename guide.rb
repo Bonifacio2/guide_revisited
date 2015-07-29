@@ -4,7 +4,7 @@ class Sentence
     @body = body
   end
 
-  def is_statement?
+  def is_value_statement?
     match_data = /^[\w]+ is [IVXLCMD]$/.match(@body)
 
     if match_data.nil?
