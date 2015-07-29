@@ -19,4 +19,10 @@ class SentenceTest < Test::Unit::TestCase
     assert_equal(first_sentence.is_price_statement?, true)
     assert_equal(second_sentence.is_price_statement?, false)
   end
+
+  def test_is_question
+    sentence = Sentence.new('how much is pish tegj glob glob ?')
+
+    assert_equal(sentence.is_question?, true)
+  end
 end

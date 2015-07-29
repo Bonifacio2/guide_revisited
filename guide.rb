@@ -22,6 +22,10 @@ class Sentence
     else
       return true
     end
-
   end
+
+  def is_question?
+    true
+  end
+
 end
