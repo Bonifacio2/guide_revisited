@@ -35,8 +35,15 @@ class ValueStatementTest < Test::Unit::TestCase
     first_sentence = Sentence.new('chip is X')
     first_statement  = ValueStatement.new(first_sentence)
 
+    second_sentence = Sentence.new('blah is M')
+    second_statement = ValueStatement.new(second_sentence)
+
     assert_equal(first_statement.key, 'chip')
     assert_equal(first_statement.value, 'X')
+
+    assert_equal(second_statement.key, 'blah')
+    assert_equal(second_statement.value, 'M')
+
   end
 end
 

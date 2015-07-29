@@ -1,5 +1,7 @@
 class Sentence
 
+  attr_reader :body
+
   def initialize(body)
     @body = body
   end
@@ -37,14 +39,12 @@ end
 
 class ValueStatement
 
-  def initialize(body)
+  attr_reader :key, :value
+
+  def initialize(sentence)
+    match_data = / is /.match(sentence.body)
+    @key = match_data.pre_match
+    @value = match_data.post_match
   end
 
-  def key
-    'chip'
-  end
-
-  def value
-    'X'
-  end
 end
