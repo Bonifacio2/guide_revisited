@@ -1,8 +1,11 @@
 require 'test/unit'
 
-class TestSanity < Test::Unit::TestCase
+require_relative 'guide'
 
-  def test_sanity
-    assert_equal(1, 1)
+class SentenceTest < Test::Unit::TestCase
+
+  def test_is_statement
+    sentence = Sentence.new('value is X')
+    assert_equal(sentence.is_statement?, true)
   end
 end
