@@ -138,11 +138,21 @@ end
 
 class Question
 
-  def initialize(a,b,c)
-  end
+  attr_reader :answer
 
-  def answer
-    6
+  def initialize(sentence, conversion_table, price_table)
+
+    if /how much is /.match(sentence.body)
+      match_data = /how much is /.match(sentence.body)
+      intergalatic_amount_description = match_data.post_match.sub('?', '').strip
+
+      result = Currency.new(intergalatic_amount_description, conversion_table).value
+
+      @answer = intergalatic_amount_description + ' is ' + result.to_s
+    else
+      @answer = 6
+    end
+
   end
 end
 

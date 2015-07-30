@@ -89,18 +89,25 @@ class AnswerTest < Test::Unit::TestCase
   def test_answering
 
     conversion_table = {
-      'papu' => 'I'
+      'papu' => 'I',
+      'aku' => 'V'
     }
 
     price_table = {
-      'Iron' => 3
+      'Iron' => 3,
+      'Ore' => 7
     }
 
-    sentence = Sentence.new('how much is papu papu Iron ?')
+    iron_sentence = Sentence.new('how much is papu aku ?')
+    iron_question = Question.new(iron_sentence, conversion_table, price_table)
 
-    question = Question.new(sentence, conversion_table, price_table)
+    assert_equal(iron_question.answer, 'papu aku is 4')
 
-    assert_equal(question.answer, 6)
+    #ore_sentence = Sentence.new('how much is papu aku Ore ?')
+    #ore_question = Question.new(ore_sentence, conversion_table, price_table)
+
+    #assert_equal(ore_question.answer, 28)
+
   end
 
 end
