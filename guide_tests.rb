@@ -76,6 +76,7 @@ class CurrencyTest < Test::Unit::TestCase
 
     ten = Currency.new('foo', conversion_table)
     nine = Currency.new('bar foo', conversion_table)
+    eleven = Currency.new('foo bar', conversion_table)
 
     assert_equal(ten.value, 10)
     assert_equal(nine.value, 9)
