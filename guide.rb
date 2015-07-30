@@ -108,7 +108,7 @@ class Currency
   def get_roman_representation
     roman_representation = @text_representation
     @conversion_table.each do |key, value|
-      roman_representation = roman_representation.gsub(key, value)
+      roman_representation = roman_representation.gsub(key, value.to_s)
     end
 
     roman_representation.gsub(' ','')
@@ -122,13 +122,16 @@ class PriceStatement
   attr_reader :metal, :price
 
   def initialize(sentence, conversion_table)
-    if sentence.body == 'hue Gold is 155'
-      @metal = 'Gold'
-      @price = 155
-    else
-      @metal = 'Silver'
-      @price = 7
-    end
-  end
+    match_data = /[\w]+ is [0-9]+/.match(sentence.body)
 
+    intergalatic_amount_description = match_data.pre_match.strip
+    metal_amount = Currency.new(intergalatic_amount_description, conversion_table).value.to_f
+
+    match_data = / is /.match(match_data.to_s)
+
+    @metal = match_data.pre_match.strip
+    total = match_data.post_match.strip.to_i
+
+    @price = total / metal_amount
+  end
 end

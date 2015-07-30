@@ -51,7 +51,7 @@ class PriceStatementTest < Test::Unit::TestCase
 
   def test_creation
 
-    conversion_table = {:hue => 1}
+    conversion_table = {'hue' => 'I'}
     first_sentence = Sentence.new('hue Silver is 7 Credits')
     silver_price_statement = PriceStatement.new(first_sentence, conversion_table)
 
