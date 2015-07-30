@@ -108,6 +108,11 @@ class QuestionTest < Test::Unit::TestCase
 
     assert_equal(ore_question.answer, 'aku papu papu is 49 Credits')
 
+    non_sense = Sentence.new('how much huehue could a HUEHUEBR hue if a HUEHUEBR could huehue wood ?')
+    non_sense_question = Question.new(non_sense, conversion_table, price_table)
+
+    assert_equal(non_sense_question.answer, 'I have no idea what you are talking about')
+
   end
 
 end

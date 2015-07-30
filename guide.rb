@@ -165,6 +165,8 @@ class Question
       credits_amount = metal_amount * price_table[metal_name]
 
       @answer = intergalatic_amount_description + ' is ' + credits_amount.to_s + ' Credits'
+    else
+      @answer = 'I have no idea what you are talking about'
     end
 
   end
