@@ -84,7 +84,7 @@ class CurrencyTest < Test::Unit::TestCase
   end
 end
 
-class AnswerTest < Test::Unit::TestCase
+class QuestionTest < Test::Unit::TestCase
 
   def test_answering
 
@@ -103,10 +103,10 @@ class AnswerTest < Test::Unit::TestCase
 
     assert_equal(iron_question.answer, 'papu aku is 4')
 
-    #ore_sentence = Sentence.new('how much is papu aku Ore ?')
-    #ore_question = Question.new(ore_sentence, conversion_table, price_table)
+    ore_sentence = Sentence.new('how many Credits is aku papu papu Ore ?')
+    ore_question = Question.new(ore_sentence, conversion_table, price_table)
 
-    #assert_equal(ore_question.answer, 28)
+    assert_equal(ore_question.answer, 'aku papu papu is 49 Credits')
 
   end
 

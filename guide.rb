@@ -149,8 +149,22 @@ class Question
       result = Currency.new(intergalatic_amount_description, conversion_table).value
 
       @answer = intergalatic_amount_description + ' is ' + result.to_s
-    else
-      @answer = 6
+    elsif /how many Credits is /.match(sentence.body)
+      match_data = /how many Credits is /.match(sentence.body)
+
+      amount_and_metal_name = match_data.post_match
+
+      amount_and_metal_name_match = /[A-Z]+ \?/i.match(amount_and_metal_name)
+
+      metal_name = amount_and_metal_name_match.to_s.gsub('?', '').strip
+
+      intergalatic_amount_description = amount_and_metal_name_match.pre_match.strip
+
+      metal_amount = Currency.new(intergalatic_amount_description, conversion_table).value
+
+      credits_amount = metal_amount * price_table[metal_name]
+
+      @answer = intergalatic_amount_description + ' is ' + credits_amount.to_s + ' Credits'
     end
 
   end
