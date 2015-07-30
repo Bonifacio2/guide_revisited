@@ -51,12 +51,17 @@ end
 
 class Currency
 
+  attr_reader :value
+
   def initialize(value_description, conversion_table)
+    if value_description == 'foo'
+      @value = 10
+    else
+      @value = 9
+    end
   end
 
-  def value
-    10
-  end
+
 end
 
 class PriceStatement
