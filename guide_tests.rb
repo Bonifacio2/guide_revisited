@@ -70,8 +70,8 @@ end
 class CurrencyTest < Test::Unit::TestCase
 
   def test_creation
-    conversion_table = {:foo => 'X',
-      :bar => 'I'
+    conversion_table = {'foo' => 'X',
+      'bar' => 'I'
     }
 
     ten = Currency.new('foo', conversion_table)
@@ -80,6 +80,7 @@ class CurrencyTest < Test::Unit::TestCase
 
     assert_equal(ten.value, 10)
     assert_equal(nine.value, 9)
+    assert_equal(eleven.value, 11)
   end
 end
 
