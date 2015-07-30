@@ -52,17 +52,17 @@ class PriceStatementTest < Test::Unit::TestCase
   def test_creation
 
     conversion_table = {:hue => 1}
-
     first_sentence = Sentence.new('hue Silver is 7 Credits')
+    silver_price_statement = PriceStatement.new(first_sentence, conversion_table)
 
-    price_statement = PriceStatement.new(first_sentence, conversion_table)
+    assert_equal(silver_price_statement.metal, 'Silver')
+    assert_equal(silver_price_statement.price, 7)
 
-    assert_equal(price_statement.metal, 'Silver')
-    assert_equal(price_statement.price, 7)
+    second_sentence = Sentence.new('hue Gold is 155')
+    gold_price_statement = PriceStatement.new(second_sentence, conversion_table)
 
-
-
-
+    assert_equal(gold_price_statement.metal, 'Gold')
+    assert_equal(gold_price_statement.price, 155)
 
   end
 end

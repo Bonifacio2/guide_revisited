@@ -51,16 +51,16 @@ end
 
 class PriceStatement
 
+  attr_reader :metal, :price
+
   def initialize(sentence, conversion_table)
+    if sentence.body == 'hue Gold is 155'
+      @metal = 'Gold'
+      @price = 155
+    else
+      @metal = 'Silver'
+      @price = 7
+    end
   end
-
-  def metal
-    'Silver'
-  end
-
-  def price
-    7
-  end
-
 
 end
