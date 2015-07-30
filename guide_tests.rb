@@ -84,6 +84,27 @@ class CurrencyTest < Test::Unit::TestCase
   end
 end
 
+class AnswerTest < Test::Unit::TestCase
+
+  def test_answering
+
+    conversion_table = {
+      'papu' => 'I'
+    }
+
+    price_table = {
+      'Iron' => 3
+    }
+
+    sentence = Sentence.new('how much is papu papu Iron ?')
+
+    question = Question.new(sentence, conversion_table, price_table)
+
+    assert_equal(question.answer, 6)
+  end
+
+end
+
 class GuideTest < Test::Unit::TestCase
 
   def test_creation
