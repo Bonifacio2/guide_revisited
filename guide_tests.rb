@@ -67,6 +67,16 @@ class PriceStatementTest < Test::Unit::TestCase
   end
 end
 
+class CurrencyTest < Test::Unit::TestCase
+
+  def test_creation
+    conversion_table = {:foo => 'X'}
+
+    currency = Currency.new('foo', conversion_table)
+
+    assert_equal(currency.value, 10)
+  end
+end
 
 
 

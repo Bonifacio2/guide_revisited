@@ -49,6 +49,16 @@ class ValueStatement
 
 end
 
+class Currency
+
+  def initialize(value_description, conversion_table)
+  end
+
+  def value
+    10
+  end
+end
+
 class PriceStatement
 
   attr_reader :metal, :price
