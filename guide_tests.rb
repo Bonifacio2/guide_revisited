@@ -25,7 +25,7 @@ class SentenceTest < Test::Unit::TestCase
     second_sentence = Sentence.new('how much hue hue br ?')
 
     assert_equal(first_sentence.is_question?, true)
-    assert_equal(second_sentence.is_question?, false)
+    assert_equal(second_sentence.is_question?, true)
   end
 end
 
@@ -106,7 +106,7 @@ class QuestionTest < Test::Unit::TestCase
     ore_sentence = Sentence.new('how many Credits is aku papu papu Ore ?')
     ore_question = Question.new(ore_sentence, conversion_table, price_table)
 
-    assert_equal(ore_question.answer, 'aku papu papu is 49 Credits')
+    assert_equal(ore_question.answer, 'aku papu papu Ore is 49 Credits')
 
     non_sense = Sentence.new('how much huehue could a HUEHUEBR hue if a HUEHUEBR could huehue wood ?')
     non_sense_question = Question.new(non_sense, conversion_table, price_table)

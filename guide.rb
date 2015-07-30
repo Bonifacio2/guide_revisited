@@ -27,7 +27,7 @@ class Sentence
   end
 
   def is_question?
-    match_data = /^how (much|many Credits) is [a-z ]+ \?/i.match(@body)
+    match_data = /^how (much|many Credits) [a-z ]+ \?/i.match(@body)
 
     if match_data.nil?
       return false
@@ -164,7 +164,7 @@ class Question
 
       credits_amount = metal_amount * price_table[metal_name]
 
-      @answer = intergalatic_amount_description + ' is ' + credits_amount.to_s + ' Credits'
+      @answer = '%s %s is %.f Credits' % [intergalatic_amount_description, metal_name, credits_amount]
     else
       @answer = 'I have no idea what you are talking about'
     end
@@ -174,14 +174,28 @@ end
 
 
 class Guide
-  def initialize(s)
-  end
+  attr_reader :answers
 
-  def answers
-    ['pish tegj glob glob is 42',
-    'glob prok Silver is 68 Credits',
-    'glob prok Gold is 57800 Credits',
-    'glob prok Iron is 782 Credits',
-    'I have no idea what you are talking about']
+  def initialize(input)
+
+    conversion_table = {}
+    price_table = {}
+
+    @answers = []
+
+    input.each do |line|
+      sentence = Sentence.new(line)
+
+      if sentence.is_value_statement?
+        value_statement = ValueStatement.new(sentence)
+        conversion_table[value_statement.key] = value_statement.value
+      elsif sentence.is_price_statement?
+        price_statement = PriceStatement.new(sentence, conversion_table)
+        price_table[price_statement.metal] = price_statement.price
+      elsif sentence.is_question?
+        question = Question.new(sentence, conversion_table, price_table)
+        @answers.push(question.answer)
+      end
+    end
   end
 end
